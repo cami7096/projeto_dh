@@ -1,0 +1,110 @@
+body {
+  font-family: verdana, arial;
+  font-size: 0.9em;
+  background-color: lightblue;
+}
+
+header{
+  width: 942px;
+}
+
+#logo{
+  position: absolute;
+  top: -2px;
+  left: 180px;
+  z-index: 1 ;
+}
+
+.menu  ul{
+  background: #e8544b;
+  padding: 1em;
+  position: relative;
+  left: 13em;
+  top: 10px;
+}
+
+.menu li {
+  list-style: none;
+  display: inline-block;
+  position: relative;
+  left: 6em;
+  margin-left: 1.5em;
+
+}
+
+.menu a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.container{
+  background-color: #fff;
+  width: 942px;
+  position: relative;
+  left: 187px;
+  top: 1.8em;
+}
+
+div{
+  width: 300px;
+  height: 300px;
+  display: inline-block;
+  margin: 5px;
+}
+
+.caixa1{
+  background-image: url(../images/DW.jpg);
+  background-size: cover
+}
+
+.caixa2{
+  background-image: url(../images/DW2.jpg);
+  background-size: cover
+}
+
+.caixa3{
+  background-image: url(../images/DW3.jpg);
+  background-size: cover
+}
+
+div img{
+  width: 70px;
+  float: right;
+}
+
+div span{
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 13pt;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: relative;
+  top: 15em;
+  display: inline-block;
+  width: 300px;
+  height: 22px;
+  text-align: center;
+}
+
+div a{
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: red;
+  padding: 1em;
+  position: relative;
+  top: 14em;
+  left: 7em;
+}
+
+footer{
+  width: 942px;
+  background: #e8544b;
+  margin-top: 2.5em;
+  padding: 1em 0 1em 0;
+  position: relative;
+  left: 13em;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+}
