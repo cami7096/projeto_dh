@@ -1,7 +1,7 @@
 body {
   font-family: verdana, arial;
   font-size: 0.9em;
-  background-color: lightblue;
+  background-color: #ffffff;
 }
 
 header{
@@ -10,17 +10,18 @@ header{
 
 #logo{
   position: absolute;
-  top: -2px;
-  left: 180px;
+  top: 1.5vw;
+  left: 15vw;
   z-index: 1 ;
 }
 
-.menu  ul{
-  background: #e8544b;
+.menu ul{
+  background: #616161;
   padding: 1em;
   position: relative;
-  left: 13em;
+  left: 25vw;
   top: 10px;
+  width: 55vw;
 }
 
 .menu li {
@@ -47,8 +48,8 @@ header{
 }
 
 div{
-  width: 300px;
-  height: 300px;
+  width: 22vw;
+  height: 60vh;
   display: inline-block;
   margin: 5px;
 }
@@ -90,7 +91,7 @@ div a{
   color: #fff;
   text-decoration: none;
   text-transform: uppercase;
-  background-color: red;
+  background-color: #616161;
   padding: 1em;
   position: relative;
   top: 14em;
@@ -99,7 +100,7 @@ div a{
 
 footer{
   width: 942px;
-  background: #e8544b;
+  background: #616161;
   margin-top: 2.5em;
   padding: 1em 0 1em 0;
   position: relative;
