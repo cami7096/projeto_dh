@@ -1,11 +1,19 @@
 <?php
-
-if($_POST){
-  session_start();
-  if($_SESSION["email"] === $_POST["email"] && $_SESSION["password"] === $_POST["password"] ){
-     header("Location:../home/index.php");
-  }
-
+$usuario = 'root';
+$senha = 'root';
+$db = new PDO('mysql:host=localhost;dbname=projeto_dh', $usuario, $senha);
+if ($_POST){
+$query = $db->prepare("select * from pessoa where email=:email and senha=:password");
+$query->execute([
+  ':email'=>$_POST['email'],
+  ':password'=>$_POST['password']
+]);
+if($query->rowCount()>0){
+  header("Location:../perfil/index.html");
+}
+else{
+  echo "<script>alert('Senha incorreta, tente novamente')</script>";
+}
 }
 
 ?>
@@ -32,13 +40,12 @@ if($_POST){
     <div class="imagem">
       <img src="images/pessoas.jpg"  alt="">
     </div>
-    <form class="form-signin" method="post" action="../home/index.php">
-      <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <form class="form-signin" method="post" action="index.php">
       <h1 class="h3 mb-3 font-weight-normal">Login</h1>
       <label for="inputEmail" class="sr-only">Email</label>
       <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
-      <label name="password" for="inputPassword" class="sr-only">Senha</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required>
+      <label for="inputPassword" class="sr-only">Senha</label>
+      <input name="password"  type="password" id="inputPassword" class="form-control" placeholder="Senha" required>
       <div class="checkbox mb-3">
         <label>
           <a href="../registro/index.php">Registrar-se</a>

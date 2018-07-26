@@ -1,4 +1,24 @@
 <?php
+$usuario = 'root';
+$senha = 'root';
+$db = new PDO('mysql:host=localhost;dbname=projeto_dh', $usuario, $senha);
+if ($_POST){
+$query = $db->prepare("insert into pessoa values (id, :nome, :sobrenome, :email, :sexo, null, :senha)");
+$cadastro = $query->execute([
+  ':nome'=>$_POST['nome'],
+  ':sobrenome'=>$_POST['sobrenome'],
+  ':email'=>$_POST['email'],
+  ':sexo'=>$_POST['sexo'],
+  ':senha'=>$_POST['senha']
+]);
+if($cadastro){
+  header("Location:../sign-in/index.php");
+}
+else{
+  echo "<script>alert('Erro, tente novamente')</script>";
+}
+}
+
 session_start();
 if($_POST){
 $_SESSION["email"] = $_POST["email"];
@@ -35,21 +55,20 @@ exit;
       <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
       <h1 class="h3 mb-3 font-weight-normal">Cadastro</h1>
       <label for="inputName" class="sr-only">Nome</label>
-      <input type="Name" id="inputName" class="form-control" placeholder="Nome" required autofocus>
+      <input name="nome" type="text" id="inputName" class="form-control" placeholder="Nome" required autofocus>
       <label for="inputLastName" class="sr-only">Sobrenome</label>
-      <input type="Sobrenome" id="inputLastName" class="form-control" placeholder="Sobrenome" required autofocus>
+      <input name="sobrenome" type="text" id="inputLastName" class="form-control" placeholder="Sobrenome" required autofocus>
       <label for="inputEmail" class="sr-only">Email</label>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+      <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
       <label for="inputPassword" class="sr-only">Senha</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required>
+      <input name="senha" type="password" id="inputPassword" class="form-control" placeholder="Senha" required>
       <label for="inputPassword" class="sr-only">Confirmação da Senha</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Confimação de Senha" required>
+      <input name="senhaconfirm" type="password" id="inputPassword" class="form-control" placeholder="Confimação de Senha" required>
       <div class="checkbox mb-3">
 
         <label for="inputGender">Gênero:</label><br>
-        <input type="radio" name="gender" value="Masculino"> Masculino<br>
-        <input type="radio" name="gender" value="Feminino"> Feminino<br>
-        <input type="radio" name="gender" value="Outro"> Outro<br>
+        <input name="sexo" type="radio" name="gender" value="masculino"> Masculino<br>
+        <input name="sexo" type="radio" name="gender" value="feminino"> Feminino<br>
 
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Cadastre-se</button>
