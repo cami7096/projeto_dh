@@ -1,21 +1,25 @@
 <?php
-$usuario = 'root';
-$senha = 'root';
-$db = new PDO('mysql:host=localhost;dbname=projeto_dh', $usuario, $senha);
-if ($_POST){
-$query = $db->prepare("select * from pessoa where email=:email and senha=:password");
-$query->execute([
-  ':email'=>$_POST['email'],
-  ':password'=>$_POST['password']
-]);
-if($query->rowCount()>0){
-  header("Location:../perfil/index.html");
-}
-else{
-  echo "<script>alert('Senha incorreta, tente novamente')</script>";
-}
+require "classes/Login.php";
+
+if ($_POST) {
+  $email = $_POST['email'];
+  $senha = $_POST['senha'];
+
+  $login = new Login($email, $senha);
+  $resultado = $login->realizarLogin();
+
+  if ($resultado === true) {
+    $sucesso = true;
+  }
 }
 
+  if ($_POST) {
+    if (isset($sucesso)) {
+      header('location: perfil/index.html');
+    } else {
+      echo "<br/>Usuário ou senha inválidos!<br/><br/>";
+    }
+  }
 ?>
 
 <!doctype html>

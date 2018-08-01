@@ -1,23 +1,24 @@
 <?php
-$usuario = 'root';
-$senha = 'root';
-$db = new PDO('mysql:host=localhost;dbname=projeto_dh', $usuario, $senha);
-if ($_POST){
-$query = $db->prepare("insert into pessoa values (id, :nome, :sobrenome, :email, :sexo, null, :senha)");
-$cadastro = $query->execute([
-  ':nome'=>$_POST['nome'],
-  ':sobrenome'=>$_POST['sobrenome'],
-  ':email'=>$_POST['email'],
-  ':sexo'=>$_POST['sexo'],
-  ':senha'=>$_POST['senha']
-]);
-if($cadastro){
-  header("Location:../sign-in/index.php");
+require "classes/Cadastro.php";
+
+if ($_POST) {
+  $nome = $_POST['nome'];
+  $sobrenome = $_POST['sobrenome']
+  $email = $_POST['email'];
+  $sexo = $_POST['sexo'];
+  $senha = $_POST['senha'];
+
+
+  $cadastro = new Cadastro($nome, $sobrenome, $email, $sexo, $senha);
+  $resultado = $cadastro->realizarCadastro();
+
+  if ($resultado === true) {
+    $sucesso = true;
+  } else {
+    $sucesso = false;
+  }
 }
-else{
-  echo "<script>alert('Erro, tente novamente')</script>";
-}
-}
+
 
 session_start();
 if($_POST){
@@ -26,8 +27,6 @@ $_SESSION["password"] = $_POST["password"];
 header("Location:../sign-in/index.php");
 exit;
 }
-
-
 
 ?>
 
