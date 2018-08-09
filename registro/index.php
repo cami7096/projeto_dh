@@ -19,13 +19,13 @@ else{
 }
 }
 
-session_start();
-if($_POST){
-$_SESSION["email"] = $_POST["email"];
-$_SESSION["password"] = $_POST["password"];
-header("Location:../sign-in/index.php");
-exit;
-}
+// session_start();
+// if($_POST){
+// $_SESSION["email"] = $_POST["email"];
+// $_SESSION["password"] = $_POST["password"];
+// header("Location:../sign-in/index.php");
+// exit;
+// }
 
 
 
