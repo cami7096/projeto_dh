@@ -19,7 +19,6 @@ if ($_POST) {
   }
 }
 
-<<<<<<< HEAD
 // session_start();
 // if($_POST){
 // $_SESSION["email"] = $_POST["email"];
@@ -27,7 +26,7 @@ if ($_POST) {
 // header("Location:../sign-in/index.php");
 // exit;
 // }
-=======
+
 
 session_start();
 if($_POST){
@@ -36,7 +35,6 @@ $_SESSION["password"] = $_POST["password"];
 header("Location:../sign-in/index.php");
 exit;
 }
->>>>>>> 36f267e8942221dead52f5adf7f4534699909017
 
 ?>
 
